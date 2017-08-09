@@ -1,6 +1,6 @@
 import ast
 from os.path import expanduser, realpath, isfile
-from random import shuffle
+from random import choice, shuffle
 import errno
 from os import walk, symlink, remove, getenv
 from subprocess import Popen
@@ -60,6 +60,10 @@ def delete_theme(filename):
 def show_wallpapers():
     files = FileList(WAL_DIR)
     files.show_list()
+
+def random_theme():
+    files = FileList(WAL_DIR)
+    return choice(files.files)
 
 def show_current():
     image = realpath(WAL_DIR + '.current').split('/').pop()
